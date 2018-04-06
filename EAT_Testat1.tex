@@ -1,0 +1,82 @@
+\documentclass[a4paper,11pt,oneside]{book}
+\usepackage{amsmath}
+%\usepackage{pdfpages}
+
+%---------- | < document settings > | ----------
+\title{EAT Testat 1}
+\usepackage{authblk}
+
+
+%\author{testAutor}
+%---------- | < layout > | ----------
+\usepackage{layout}
+
+\begin{document}
+\pagestyle{plain}
+
+\title{More than one Author with different Affiliations}
+\author[1]{Adrian Bucher\thanks{adrian.bucher@stud.hslu.ch}}
+\author[2]{Raphael Wirtz\thanks{raphael.wirtz@stud.hslu.ch}}
+\author[1,2]{Pirmin Zimmermann\thanks{pirmin.zimmermann@stud.hslu.ch}}
+\affil[1]{Technik \& Architektur, Hochschule Luzern}
+\affil[2]{Technik \& Architektur, Hochschule Luzern}
+
+%---------- | < Titelblatt > | ----------
+\thispagestyle{empty}
+\begin{titlepage}	% noetig?
+\input{titlepage}
+\end{titlepage}
+\clearpage 
+
+\frontmatter	%römische Nummerierung aktivieren
+
+%----- | < Inhaltsverzeichnis > | -----
+\usetocstyle{allwithdot}
+%\settocfeature{}
+\tableofcontents
+\clearpage
+
+\listoffigures
+\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+\clearpage
+
+\listoftables
+\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+\clearpage
+
+%Symbolverzeichniss ????$$
+
+%\chapter{Abkürzungen}
+%\input{acronyms}
+%\clearpage
+
+\chapter{Aufgabenstellung}
+
+%---------- | < Mainmatter > | ----------
+\mainmatter		%arabische Nummerierung aktivieren
+\chapter{Aufgabenstellung}
+\clearpage
+
+\chapter{Titel}
+\clearpage
+
+\chapter{Titel}
+\clearpage
+
+\chapter{Titel}
+\clearpage
+
+%----- | < Literaturverzeichnis > | -----
+%\chapter*{Literatur- und Quellenverzeichnis}
+%\renewcommand{\refname}{Quellen-, Literaturverzeichnis}
+\bibliographystyle{apacite}
+\bibliography{bib/bibliography}
+%\bibliographycommon{../common/bib/bibliography}
+
+%---------- | < Anhang > | ----------
+\appendix		% Anhang
+\chapter{Anhang}
+
+\backmatter		%Ende des Buches, turns off pagenumberin !
+\clearpage
+\end{document}

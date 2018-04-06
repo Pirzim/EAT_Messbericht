@@ -1,0 +1,255 @@
+%---------- | Commands | ----------
+	\usepackage{xargs}			% Use more than one optional parameter in a new commands
+	
+%---------- | Encoding | ----------
+    \usepackage[utf8]{inputenc} % für input utf8
+    \usepackage[T1]{fontenc}    % Schriftcodierung mit UTF-8
+    \usepackage{textcomp}       % Erweiterung von fontenc
+    \usepackage{lmodern}        % Erweiterung des Zeichensatzes
+	\usepackage{lipsum}
+
+%---------- | Farben | ----------
+	%\usepackage{xcolor}
+	\usepackage[pdftex,dvipsnames, table]{xcolor}  % Coloured text etc.
+	%-----| AMZ
+	\definecolor{amzred} 		{RGB}   {210, 10, 17}
+	\definecolor{amzblack}		{RGB}   {0  ,  0, 0}
+	\definecolor{amzwhite}		{RGB}	{255,255,255}
+	\definecolor{amzgray}		{RGB}	{227,227,227}
+	\definecolor{amzyellow}		{RGB}	{255,204,  0}
+	\definecolor{amzgreen}		{RGB}	{  0,130, 55}
+
+%---------- | Grafiken | ----------
+	\usepackage{tikz}
+	\usepackage{graphicx}
+	\usepackage{pdfpages}       % PDF Seiten einbinden
+	\usepackage{caption}
+	
+%---------- | Mathematik | ----------
+    \usepackage{siunitx}        % SI Einheiten
+    \usepackage{amsmath}        % Strukturierung von Formeln
+    \usepackage{amssymb}        % Sonderzeichen für Formeln	
+	
+%----------| Kennz-, Schriftzeichen |----------
+	%-----| Abkürzungen
+    \usepackage[printonlyused]{acronym}
+    %\renewcommand*{\acsfont}[1]{\textnormal{#1}}
+	
+	%---| Umlaute
+	\usepackage[utf8]{inputenc}
+	
+%----------| Layout |----------
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+
+% Auch Kapitel mit "*" zu "mark" hinzufügen
+% Bsp.: Anzeige des Kapitel im Header mit leftmark
+\newcommand{\schaptermark}[1]{\markboth{\normalfont #1}{}}
+
+%---------- | Notes | ----------
+	\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+	\newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+	\newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+	\newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+	\newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+	\newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
+
+%----------| documentclass - book |----------
+\@ifclassloaded{book}{
+	%-----| front-,main-,backmatter
+	%---| frontmatter
+	%-- Römische Nummerierung bei Seite & Titel
+	\def\frontmatter{%
+		\pagenumbering{roman}
+		\setcounter{page}{1}
+		\renewcommand{\thechapter}{\Roman{chapter}}
+		\renewcommand{\thesection}{\Roman{section}}
+		\renewcommand{\thefigure}{\Roman{chapter}.\Roman{figure}}
+	}%
+	%---| mainmatter
+	\def\mainmatter{%
+		\pagenumbering{arabic}
+		\setcounter{page}{1}
+		\setcounter{chapter}{0}
+		\setcounter{section}{0}
+		\renewcommand{\thechapter}{\arabic{chapter}}
+		\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+		\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+		\setlength{\parindent}{0pt}
+	}%
+	%---| backmatter
+	\def\backmatter{%
+		\setcounter{section}{0}
+		\renewcommand{\thesection}{\Alph{section}}
+	}%
+
+}
+
+	%-----| Gliederung
+	% Hierarchisch geordnet (absteigend)
+	%---| part
+	
+	%---| chapter
+	%\definecolor{gray75}{gray}{0.75}
+	\newcommand{\hsp}{\hspace{15pt}}
+	\titleformat{\chapter}[hang]
+	%{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}
+	{\Huge\bfseries}{\thechapter\hsp\textcolor{black}{|}\hsp}
+	{0pt}{\Huge\bfseries}  
+	\titlespacing*{\chapter}{0pt}{0pt}{30pt}
+	%---| section
+	
+	%---| subsection
+	
+	%---| paragraph
+	\parskip=12pt % adds vertical space between paragraphs
+	%---| subparagraph
+	
+	%-----| Seitengliederung
+	%---| Seitenmass,-rand
+	\usepackage{geometry}
+	\geometry{
+		a4paper,
+		total={170mm,257mm},
+		left = 2cm,
+		right = 2cm,
+		top = 3cm,
+		bottom = 2.5cm,
+	}
+	%---| Rand
+	%\setlength{\topmargin}{0cm}
+	%\addtolenght{\topmargin}{0cm}
+	\setlength{\headheight}{14px}
+	%\setlength{\voffset}{0cm}
+	%\setlength{\headsep}{1.5cm}
+	%\addtolength{\textheight}{1cm}
+	%\addtolength{\voffset}{-0.5cm}
+	%\addtolength{\textwidth}{1cm}
+	%\addtolength{\evensidemargin}{-15mm}
+	%\addtolength{\oddsidemargin}{5mm}
+	%\addtolength{\textheight}{\topmargin-\evensidemargin-\hoffset+\voffset}
+	%\setlength{\topmargin}{\evensidemargin+\hoffset-\voffset}
+	%\addtolenght{\topmargin}{0cm}
+	%\addtolength{\headwidth}{1cm}
+	%\addtolength{\headheight}{2.5cm}
+	
+	%-----| Kopf-, Fusszeile
+	%-- "Markierung" zur Definition der classe book hinzufügen
+	% siehe own cmd "schaptermark"
+	% modified from book.cls - don't use \def unless you **know** it is safe!
+	% Link: https://tex.stackexchange.com/questions/296462/how-to-remove-the-name-chapter-with-fanchyhdr-in-book-class
+	\makeatletter
+	\def\@schapter#1{\if@twocolumn
+	  \@topnewpage[\@makeschapterhead{#1}]%
+	  \else
+	  \@makeschapterhead{#1}
+	  \schaptermark{\uppercase{#1}}% <= our addition here, Grossschrift
+	  \@afterheading
+	  \fi}
+	\makeatother
+
+	%\newcommand{\headHLtext}{Text oben links}	% not used
+	\fancypagestyle{plain}{% Titelseiten etc., special sites
+		\fancyhf{}% clear all header and footers fields
+		%\fancyhead[L]{\headHLtext}				% not used
+		\fancyhead[L]{\leftmark}
+		\fancyhead[R]{\textbf{EAT} Testat 1}
+		\fancyfoot[C]{HSLU T\&A}
+		\fancyfoot[LE]{\author}
+		\fancyfoot[R]{\thepage}
+		\renewcommand{\headrulewidth}{0.4pt}% Lookine at the header
+		\renewcommand{\footrulewidth}{0.4pt}% Line at the footer
+	}
+	\fancypagestyle{myBook_1}{
+		\fancyhf{}% clear all header and footers fields
+		\fancyfoot[L]{\thepage}
+		\fancyhead[L]{}
+		\fancyhead[R]{}
+		
+		\fancyfoot[C]{}
+		%\fancyfoot[L]{\thepage}
+		\fancyfoot[R]{\thepage}
+		\renewcommand{\headrulewidth}{0.4pt}% Line at the header
+		\renewcommand{\footrulewidth}{0.4pt}% Line at the footer
+	}
+
+%----------| Seiteneinstellung |----------
+    \usepackage{lscape}         % Einzelne Seiten im Querformat
+    \usepackage{pdflscape}      % Einzelne Seiten im Querformat (bessere Lesbarkeit)
+
+
+
+%----------| Sprache |----------
+	%-----| Deutsch 
+	\usepackage[english,french,ngerman]{babel} % ngerman: Neue deutsche Rechtschreibung
+
+%----------| Tabellen |----------	
+	%-----| toc, of contents
+	\usepackage{tocloft}
+	\usepackage{tocstyle}
+
+% Eigene definierte Farben
+    \definecolor{gray}      {gray}  {0.749}
+    \definecolor{lgray}     {gray}  {0.85}
+    \definecolor{red}       {rgb}   {1 ,  0  , 0}
+    \definecolor{green}     {rgb}   {0 ,  1  , 0}
+    \definecolor{blue}      {rgb}   {0 ,  0  , 1}
+    \definecolor{darkgreen} {rgb}   {0 , 0.6 , 0}
+    
+	%-----| lof, list of figures
+	
+	%-----| lot, list of tables
+	\usepackage{longtable}      % Seitenübergreifende Tabellen
+    \usepackage{multirow}       % Zeilen zusammenfassen
+	
+	% Eigene Tabellen
+	% Eigene Spaltenfarben
+	\newcolumntype{g}{>{\columncolor{lgray}}c}
+	\newcolumntype{w}{>{\columncolor{white}}c}
+    % Hellgrau und weiss abwechselnd
+    \newenvironment{zebratabular}{\rowcolors{2}{lgray}{white}\tabular}{\endtabular}
+    \newenvironment{zebralongtable}{\rowcolors{2}{lgray}{white}\longtable}{\endlongtable}
+    
+	%----------| Verlinkungen |---------
+	\usepackage{appendix}
+    \usepackage{makeidx}        % Index
+	\usepackage[hidelinks]{hyperref}
+	\usepackage{cite}           % Zitieren
+    \usepackage{apacite}        % APA Stil
+    \usepackage{url}
+	
+%----------| TikZ |----------	
+	\makeatletter       % @ Teil des Befehls
+    \@ifclassloaded{beamer}{
+        % Do not load package subcaption in beamer class
+    }{ 
+        \usepackage{subcaption}     % Bildunterschrift unter zusammen dargestellten Bildern
+    }
+    \makeatother        % @ wieder anderes Zeichen
+    \usepackage{tikz}           % TikZ - "TikZ ist kein Zeichenprogramm"
+        \usetikzlibrary{tikzmark}   % References for hooking tikz graphics to
+        \usetikzlibrary{arrows}
+        \usetikzlibrary{automata}
+        \usetikzlibrary{shapes.geometric}
+    \tikzset{elliptic state/.style={draw, ellipse, minimum height=1.2cm}}
+    \usepackage{tikz-timing}    % For drawing timing diagrams with tikz
+        \usetikztiminglibrary[new={char=Q,reset char=R, increment=-1}]{counters}
+        \usetikztiminglibrary{either}
+        %\usetikztiminglibrary{advnodes}
+    \usepackage{placeins}       % For \FloatBarrier
+    
+	%-------------C-Code einbinden--------------------
+	\usepackage{listings}
+	\lstdefinestyle{customc}{
+  	belowcaptionskip=1\baselineskip,
+  	breaklines=true,
+  	frame=L,
+  	xleftmargin=\parindent,
+ 	language=C,
+  	showstringspaces=false,
+  	basicstyle=\footnotesize\ttfamily,
+  	keywordstyle=\bfseries\color{green!40!black},
+  	commentstyle=\itshape\color{purple!40!black},
+  	identifierstyle=\color{blue},
+  	stringstyle=\color{orange},
+	}
