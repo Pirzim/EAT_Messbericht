@@ -7,6 +7,7 @@
 
 \usepackage{authblk}
 \usepackage{float}% example bilder
+\usepackage{array}
 
 %\usepackage{pdfpages}
 \usepackage{layout}
@@ -145,7 +146,49 @@
 %\newpage
 \section{Aufgabe 1}
 \section{Aufgabe 2}
-\section{Aufgabe 3}
+\section{Optimierte Pulsmuster}
+
+\begin{subequations} \label{eq:equations}
+\begin{align}
+M*\frac{\pi}{4} &= [1-2*\cos(\alpha_1)+2*\cos(\alpha_2)]
+\label{eq:pulsmuster1}\\
+Û_v = 0 &= \underbrace{\frac{4}{\pi}}_{test}*\underbrace{\frac{U_{dc}}{2}}_{Zwischenkreis}\frac{1}{\upsilon}[1-2*\cos(\upsilon*\alpha_1)+2*\cos(\upsilon*\alpha_2)]
+\label{eq:pulsmuster2}
+\end{align}
+\end{subequations}
+
+
+%% Example subequation
+%\begin{subequations} \label{eq:equations}
+%\begin{align}
+%y 	& = a + f(\underbrace{b x}_{\ge 0}) \label{eq:eqsub_1}\\
+%z	& = b + a \label{eq:eqsub_2}
+%\end{align}
+%\end{subequations}
+
+%% Example linear equations
+%\begin{align}
+%	\begin{array}{*{3}{rc}r}
+%	2x & + &  y & + & 3z & = & 10 \\
+% 	x & + &  y & + &  z & = &  6 \\
+%	 x & + & 3y & + & 2z & = & 13
+%	\end{array}
+%\end{align}
+
+
+\begin{align}
+\text{Luftwiderstand:} &&
+F_{Drag}=F_L=C_W*A*\frac{\rho}{2}*v^2
+\label{eq:Luftwiderstand}\\
+\text{Barometrische Höhenformel:} &&
+p(h_1)=p(h_0)(1-\frac{0.0065*\Delta h}{T(h_0)} )
+\label{eq:BarometrischeHoehenformel}\\
+\text{Raketengleichung:} &&
+m*a=F_{thrust}-F_{drag}-m*g\\
+&&
+a=\frac{F_{thrust}-F_{drag}-m*g}{m}
+\label{eq:Raketengleichung}
+\end{align}
 
 \clearpage
 
