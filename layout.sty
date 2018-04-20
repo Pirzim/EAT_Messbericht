@@ -54,6 +54,15 @@
 	\newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
 	\newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
 
+%----------| Seiteneinstellung |----------
+    \usepackage{lscape}         % Einzelne Seiten im Querformat
+    \usepackage{pdflscape}      % Einzelne Seiten im Querformat (bessere Lesbarkeit)
+
+%----------| Sprache |----------
+	%-----| Deutsch 
+	\usepackage[english,french,ngerman]{babel} % ngerman: Neue deutsche Rechtschreibung
+
+
 %----------| documentclass - book |----------
 \@ifclassloaded{book}{
 	%-----| front-,main-,backmatter
@@ -173,21 +182,24 @@
 		\renewcommand{\footrulewidth}{0.4pt}% Line at the footer
 	}
 
-%----------| Seiteneinstellung |----------
-    \usepackage{lscape}         % Einzelne Seiten im Querformat
-    \usepackage{pdflscape}      % Einzelne Seiten im Querformat (bessere Lesbarkeit)
 
-
-
-%----------| Sprache |----------
-	%-----| Deutsch 
-	\usepackage[english,french,ngerman]{babel} % ngerman: Neue deutsche Rechtschreibung
-
-%----------| Tabellen |----------	
-	%-----| toc, of contents
+%----------| Verzeichnisse |----------	
+	%-----| toc, table of contents
 	\usepackage{tocloft}
+	%\usepackage[subfigure]{tocloft}
 	\usepackage{tocstyle}
 
+	%-----| lof, list of figures
+	\setcounter{lofdepth}{2}
+	%-----| lot, list of tables
+	\setcounter{lotdepth}{2}
+	%-----| minitoc
+	\usepackage{minitoc}
+	\renewcommand{\mtctitle}{Inhalt}
+	\renewcommand{\mlftitle}{Abbildungen}
+	\renewcommand{\mlttitle}{Tabellen}
+	
+%----------| Tabellen |----------
 % Eigene definierte Farben
     \definecolor{gray}      {gray}  {0.749}
     \definecolor{lgray}     {gray}  {0.85}
@@ -195,10 +207,7 @@
     \definecolor{green}     {rgb}   {0 ,  1  , 0}
     \definecolor{blue}      {rgb}   {0 ,  0  , 1}
     \definecolor{darkgreen} {rgb}   {0 , 0.6 , 0}
-    
-	%-----| lof, list of figures
-	
-	%-----| lot, list of tables
+
 	\usepackage{longtable}      % Seitenübergreifende Tabellen
     \usepackage{multirow}       % Zeilen zusammenfassen
 	
@@ -210,7 +219,7 @@
     \newenvironment{zebratabular}{\rowcolors{2}{lgray}{white}\tabular}{\endtabular}
     \newenvironment{zebralongtable}{\rowcolors{2}{lgray}{white}\longtable}{\endlongtable}
     
-	%----------| Verlinkungen |---------
+%----------| Verlinkungen |---------
 	\usepackage{appendix}
     \usepackage{makeidx}        % Index
 	\usepackage[hidelinks]{hyperref}
@@ -223,7 +232,7 @@
     \@ifclassloaded{beamer}{
         % Do not load package subcaption in beamer class
     }{ 
-        \usepackage{subcaption}     % Bildunterschrift unter zusammen dargestellten Bildern
+		\usepackage[list=on]{subcaption}    % Anzeigen in lof, Bildunterschrift unter zusammen dargestellten Bildern
     }
     \makeatother        % @ wieder anderes Zeichen
     \usepackage{tikz}           % TikZ - "TikZ ist kein Zeichenprogramm"

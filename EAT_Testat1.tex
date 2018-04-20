@@ -1,19 +1,21 @@
 \documentclass[a4paper,11pt,oneside]{book}
+
 \usepackage{amsmath}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
 \usepackage{authblk}
+\usepackage{float}% example bilder
+
 %\usepackage{pdfpages}
 \usepackage{layout}
 
-%---------- | < document settings > | ----------
-\title{NAME LABORVERSUCH}
-
+%---------- | < Dokument Einstellungen > | ----------
+\title{Wechselrichter dreiphasig}
 %\author{testAutor}
-%---------- | < layout > | ----------
 
+%---------- | < document > | ---------
 \begin{document}
 \pagestyle{plain}
 
@@ -39,17 +41,30 @@
 \frontmatter	%römische Nummerierung aktivieren
 
 %----- | < Inhaltsverzeichnis > | -----
+%--- | TOC | ---
 \usetocstyle{allwithdot}
 %\settocfeature{}
+\dominitoc
 \tableofcontents
+\adjustmtc
+\addtocontents{toc}{~\hfill\textbf{Seite}\par}
 \clearpage
-
+%--- | LOF | ---
+\dominilof
 \listoffigures
+\adjustmtc
+\mtcaddchapter
+\nomlfpagenumbers
 \addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+\addtocontents{lof}{~\hfill\textbf{Seite}\par}
 \clearpage
-
+%--- | LOF | ---
+\dominilot
 \listoftables
+\adjustmtc
 \addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+\addtocontents{lot}{~\hfill\textbf{Seite}\par}
+\mtcaddchapter
 \clearpage
 
 %Symbolverzeichniss ????$$
@@ -62,13 +77,76 @@
 
 %---------- | < Mainmatter > | ----------
 \mainmatter		%arabische Nummerierung aktivieren
-\chapter{Aufgabenstellung}
+\chapter{Einrichtung}
+\begin{itemize}  
+\item Dreiphasiger Wechselrichter mit programmierbaren Pulsmustern
+(Abbildung \ref{fig:einreichting_DreiphasigerWechselrichter})
+\item Gleichrichter ABB DCS500 zur dc-seitigen Speisung des Wechselrichters
+(Abbildung \ref{fig:einrichtung_Gleichrichter})
+\item ASM Maschinensatz mit 5.5 kW
+(Abbildung \ref{fig:einrichtung_ASM})
+\item Drehmomentmesswelle
+(Abbildung \ref{fig:einrichtung_Drehmomentswelle})
+\item GM als Bremse
+(Abbildung \ref{fig:einrichtung_Gleichstrommotor})
+\end{itemize}
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\textwidth]{images/ASM.JPG}
+		\caption{ASM}
+        \label{fig:einrichtung_ASM}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\textwidth]{images/Gleichstrommotor.JPG}
+		\caption{Gleichstrommotor}
+		\label{fig:einrichtung_Gleichstrommotor}
+	\end{subfigure}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\ContinuedFloat % Nummerierung der zuvorkommenden figure vortführen (a,b,...)
+\subcaptionbox{Drehmomentswelle\label{fig:einrichtung_Drehmomentswelle}}
+  [.3\linewidth]{\includegraphics[width=5cm,angle=-90]{images/Drehmomentswelle.JPG}}
+  \hfill
+\subcaptionbox{Dreiphasiger Wechselrichter programmierbar\label{fig:einreichting_DreiphasigerWechselrichter}}
+  [.3\linewidth]{\includegraphics[height=5cm]{images/DreiphasigerWechselrichter_programmierbar.JPG}}
+  \hfill
+  \subcaptionbox{Gleichrichter\label{fig:einrichtung_Gleichrichter}}
+  [.3\linewidth]{\includegraphics[width=5cm,angle=-90]{images/Gleichrichter.JPG}}
+	\caption{Einrichtung}
+    \label{fig:einrichtung}
+\end{figure}
+
 \clearpage
 
-\chapter{Titel}
-\clearpage
+\chapter{Versuchsaufbau}
+\section{Übersichtsschema}
+\begin{figure}[h]
+	\includegraphics[width=0.9\textwidth]{images/Versuchsaufbau.jpg}
+	\caption{Übersichtsschema}
+	\label{fig:uebersichtsschema}
+\end{figure}
+\section{Anmerkungen}
+\begin{itemize}
+\item Der Frequenzumrichter ist nicht rückspeisefähig. Die GM darf auf keinen Fall als Motor betrieben werden. Die GM darf nicht am Stromrichter angeschlossen werden.
+\item Bremsenergie wird über einen Widerstand (81\si{\ohm}  in Wärme  umgewandelt.
+\item Lüftungsventiltoren ASM einschalten, besonders bei tiefen Drehzahlen.
+\item Leistungsmessgerät PM 3000 über Filter mit Wechselrichter Ausgangsspannung synchronisieren, damit Grundfrequenz bestimmbar.
+\end{itemize}
 
-\chapter{Titel}
+\chapter{Aufgaben}
+\minitoc
+\minilof
+\minilot
+%\newpage
+\section{Aufgabe 1}
+\section{Aufgabe 2}
+\section{Aufgabe 3}
+
 \clearpage
 
 \chapter{Titel}
